@@ -16,22 +16,22 @@ findDiagonalOrder(int **matrix, int matrixSize, int *matrixColSize, int *returnS
     int cur = 0;
     for (int col = 0; col < matrixColSize[0]; ++col) {
         if ((col & 1) == 0) { // Even number -> up
-            for (int x = 0, y = col; y >= 0; ++x, --y) {
+            for (int x = 0, y = col; y >= 0 && x <= matrixColSize[0]; ++x, --y) {
                 result[cur++] = matrix[y][x];
             }
         } else { // Odd number -> down
-            for (int x = col, y = 0; x >= 0; --x, ++y) {
+            for (int x = col, y = 0; x >= 0 && y <= matrixSize; --x, ++y) {
                 result[cur++] = matrix[y][x];
             }
         }
     }
     for (int row = 1; row < matrixSize; ++row) {
         if ((row & 1) == 0) { // Even number -> up
-            for (int x = row, y = matrixColSize[0] - 1; x < matrixColSize[0]; ++x, --y) {
+            for (int x = row, y = matrixColSize[0] - 1; x < matrixColSize[0] && y >= 0; ++x, --y) {
                 result[cur++] = matrix[y][x];
             }
         } else { // Odd number -> down
-            for (int x = matrixColSize[0] - 1, y = row; y < matrixSize; --x, ++y) {
+            for (int x = matrixColSize[0] - 1, y = row; y < matrixSize && x >= 0; --x, ++y) {
                 result[cur++] = matrix[y][x];
             }
         }
