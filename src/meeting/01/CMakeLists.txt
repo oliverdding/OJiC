@@ -1,0 +1,1 @@
+add_executable(meeting.01.08 08/solution1.c)
